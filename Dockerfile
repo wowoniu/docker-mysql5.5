@@ -16,6 +16,7 @@ RUN apt-get update && \
 # Add MySQL scripts
 COPY import_sql.sh /import_sql.sh
 COPY run.sh /run.sh
+RUN chmod 755 /run.sh
 
 ENV MYSQL_USER=admin \
     MYSQL_PASS=**Random** \
