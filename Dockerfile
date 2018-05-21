@@ -1,9 +1,11 @@
-FROM zhiqiangvip/docker-ubuntu1404-163
-MAINTAINER mysql qiang <zhiqiangvip999@gmail.com>
+FROM ubuntu:1404-163
+MAINTAINER mysql qiang <1947243792@qq.com>
 
 # Add MySQL configuration
 COPY my.cnf /etc/mysql/conf.d/my.cnf
 COPY mysqld_charset.cnf /etc/mysql/conf.d/mysqld_charset.cnf
+
+RUN mkdir -p /data && rm -fr /var/lib/mysql && ln -s /data /var/lib/mysql
 
 RUN apt-get update && \
     apt-get -yq install mysql-server-5.5 pwgen && \
@@ -28,7 +30,7 @@ ENV MYSQL_USER=admin \
     ON_CREATE_DB=**False**
 
 # Add VOLUMEs to allow backup of config and databases
-VOLUME  ["/etc/mysql", "/var/lib/mysql"]
+VOLUME  ["/etc/mysql"]
 
 EXPOSE 3306
 CMD ["/run.sh"]
