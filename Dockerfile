@@ -1,5 +1,5 @@
-FROM ubuntu:1404-163
-MAINTAINER mysql qiang <1947243792@qq.com>
+FROM zhiqiangvip/docker-ubuntu1404-163
+MAINTAINER mysql qiang <zhiqiangvip999@gmail.com>
 
 # Add MySQL configuration
 COPY my.cnf /etc/mysql/conf.d/my.cnf
